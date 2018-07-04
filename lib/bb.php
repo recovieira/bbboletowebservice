@@ -127,7 +127,7 @@ class BBBoletoWebService {
 		$dom = new DOMDocument('1.0', 'UTF-8');
 		// Verificar se o formato recebido é um XML válido.
 		// A expressão regular executada por "preg_replace" retira espaços vazios entre tags.
-		if (@$dom->loadXML(preg_replace('/(?<=>)\\s+(?=<)/s', '', $resposta))) {
+		if (@$dom->loadXML(preg_replace('/(?<=>)\\s+(?=<)/', '', $resposta))) {
 			// Realiza o "parse" da resposta a partir do primeiro nó no
 			// corpo do documento dentro do envelope
 			self::_parseXML($dom->documentElement->firstChild->firstChild, $resultado);
