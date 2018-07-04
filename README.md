@@ -8,13 +8,13 @@ A solução desenvolvida pelo Banco do Brasil é baseada em Web Services e utili
 O código-fonte proposto foi desenvolvido em PHP segundo a especificação para consumir o Web Service fornecido pelo Banco do Brasil.
 
 ### Índice
-- [Começando...](#comecando)
-  - [Pré-requisitos](#prerequisitos)
+- [Começando...](#começando)
+  - [Pré-requisitos](#pr%C3%A9-requisitos)
   - [Exemplo](#exemplo)
-- [Estrutura de arquivos e pastas](#estrutura)
+- [Estrutura de arquivos e pastas](#estrutura-de-arquivos-e-pastas)
 - [Changelog](#changelog)
 - [Autor](#autor)
-- [Licença](#licenca)
+- [Licença](#licen%C3%A7a)
 
 
 ### Começando...
@@ -45,10 +45,10 @@ $ php index.php
 Estrutura breve do conteúdo:
 
 ```
-├── index.php			# contém um exemplo simples de uso
+├── index.php							# contém um exemplo simples de uso
 ├── Nova Cobrança - Manual de Integração v1.4.pdf		# especificação do Banco do Brasil
-└── lib					# pasta contendo a classe
-    └── bb.php			# arquivo contendo a implementação da requisição do serviço
+└── lib								# pasta contendo a classe
+    └── bb.php							# arquivo contendo a implementação da requisição do serviço
 ```
 
 ### Changelog
