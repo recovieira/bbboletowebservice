@@ -1,5 +1,5 @@
 # **Cliente WebService para registro de boletos no Banco do Brasil**
-A partir de 2017, a rede bancária brasileira trás uma nova plataforma de geração Boletos de Cobrança Registrada, buscando uma maior agilidade e segurança para toda sociedade.
+A partir de 2017, a rede bancária brasileira traz uma nova plataforma de geração Boletos de Cobrança Registrada, buscando uma maior agilidade e segurança para toda sociedade.
 
 Conforme divulgado pela [Febraban](https://portal.febraban.org.br/pagina/3150/1094/pt-br/servicos-novo-plataforma-boletos), o início da implantação deverá ocorrer em julho/2017, devendo ser totalmente concluída até dezembro/2017.
 
