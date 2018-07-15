@@ -1,7 +1,7 @@
 # **Cliente WebService para registro de boletos no Banco do Brasil**
 A partir de 2017, a rede bancária brasileira traz uma nova plataforma de geração Boletos de Cobrança Registrada, buscando uma maior agilidade e segurança para toda sociedade.
 
-Conforme divulgado pela [Febraban](https://portal.febraban.org.br/pagina/3150/1094/pt-br/servicos-novo-plataforma-boletos), o início da implantação deverá ocorrer em julho/2017, devendo ser totalmente concluída até dezembro/2017.
+Conforme divulgado pela [Febraban](https://portal.febraban.org.br/pagina/3150/1094/pt-br/servicos-novo-plataforma-boletos), a implantação deve ser totalmente concluída a partir de dezembro/2017.
 
 A solução desenvolvida pelo Banco do Brasil é baseada em Web Services e utiliza o protocolo OAuth 2.0 para autenticação e autorização das requisições.
 
@@ -52,8 +52,11 @@ Estrutura breve do conteúdo:
 ```
 
 ### Changelog
-#### V 1.0.0
+#### V 1.0
 Lançamento inicial.
+
+#### V 1.1
+Evita requisitar uma token toda vez que for registrar um boleto. Armazena a token em cache e requisita uma nova automaticamente quando ela estiver preste a expirar ou já tiver expirado.
 
 ### Autor
 Reginaldo Coimbra Vieira (recovieira@gmail.com)
