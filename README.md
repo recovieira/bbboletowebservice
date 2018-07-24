@@ -45,10 +45,10 @@ $ php index.php
 Estrutura breve do conteúdo:
 
 ```
-├── index.php							# contém um exemplo simples de uso
-├── Nova Cobrança - Manual de Integração v1.4.pdf		# especificação do Banco do Brasil
-└── lib								# pasta contendo a classe
-    └── bb.php							# arquivo contendo a implementação da requisição do serviço
+├── index.php						# contém um exemplo simples de uso
+├── Nova Cobrança - Manual de Integração v1.4.pdf	# especificação do Banco do Brasil
+└── lib							# pasta contendo a classe
+    └── bb.php						# arquivo contendo a implementação da requisição do serviço
 ```
 
 ### Changelog
@@ -57,6 +57,9 @@ Lançamento inicial.
 
 #### V 1.1
 Evita requisitar uma token toda vez que for registrar um boleto. Armazena a token em cache e requisita uma nova automaticamente quando ela estiver preste a expirar ou já tiver expirado.
+
+#### V 1.2
+Permite separar entre o ambiente de teste (pelo método "alterarParaAmbienteDeTestes()") ou de produção (pelo "alterarParaAmbienteDeProducao()"). O exemplo no arquivo "index.php" usa o ambiente de testes.
 
 ### Autor
 Reginaldo Coimbra Vieira (recovieira@gmail.com)

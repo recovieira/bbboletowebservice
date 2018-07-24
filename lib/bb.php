@@ -1,13 +1,28 @@
 <?php
 class BBBoletoWebService {
-	// URL para obtenção do token para registro de boleto
-	static private $_tokenURL = 'https://oauth.hm.bb.com.br/oauth/token';
+	const AMBIENTE_PRODUCAO = 1;
+	const AMBIENTE_TESTE = 2;
 
-	// URL para registro de boleto
-	static private $_url = 'https://cobranca.homologa.bb.com.br:7101/registrarBoleto';
+	static private $_urls = array(
+		self::AMBIENTE_PRODUCAO => array(
+			// URL para obtenção da token para registro de boletos (produção)
+			'token' => 'https://oauth.bb.com.br/oauth/token',
+			// URL para registro de boleto (produção)
+			'registro' => 'https://cobranca.bb.com.br:7101/registrarBoleto'
+		),
+		self::AMBIENTE_TESTE => array(
+			// URL para obtenção da token para testes
+			'token' => 'https://oauth.hm.bb.com.br/oauth/token',
+			// URL para registro de boleto para teste
+			'registro' => 'https://cobranca.homologa.bb.com.br:7101/registrarBoleto'
+		)
+	);
 
 	private $_clientID;
 	private $_secret;
+
+	// Ambiente do sistema: teste ou produção?
+	private $_ambiente;
 
 	// Tempo limite para obter resposta de 20 segundos
 	private $_timeout = 20;
@@ -33,12 +48,28 @@ class BBBoletoWebService {
 	 * @param string $clientid Identificação do requisitante
 	 * @param string $secret Segredo ("Senha") do requisitante
 	 */
-	function __construct($clientid, $secret) {
+	function __construct($clientid, $secret, $ambientedeproducao = true) {
 		// Usar, por padrão, o caminho definido no atributo estático "_caminhoPastaCache_estatico"
 		$this->_caminhoPastaCache = self::$_caminhoPastaCache_estatico;
 
 		$this->_clientID	=& $clientid;
 		$this->_secret		=& $secret;
+
+		call_user_func(array($this, 'alterarParaAmbienteDe' . ($ambientedeproducao === true ? 'Producao' : 'Testes')));
+	}
+
+	/**
+	 * Alterar para o ambiente de produção
+	 */
+	function alterarParaAmbienteDeProducao() {
+		$this->_ambiente = self::AMBIENTE_PRODUCAO;
+	}
+
+	/**
+	 * Alterar para o ambiente de testes
+	 */
+	function alterarParaAmbienteDeTestes() {
+		$this->_ambiente = self::AMBIENTE_TESTE;
 	}
 
 	/**
@@ -132,7 +163,7 @@ class BBBoletoWebService {
 
 		$curl = self::_prepararCurl();
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => self::$_tokenURL,
+			CURLOPT_URL => self::$_urls[$this->_ambiente]['token'],
 			CURLOPT_POSTFIELDS => 'grant_type=client_credentials&scope=cobranca.registro-boletos',
 			CURLOPT_HTTPHEADER => array(
 				'Authorization: Basic ' . base64_encode($this->_clientID . ':' . $this->_secret),
@@ -244,7 +275,7 @@ class BBBoletoWebService {
 			// Preparar requisição
 			$curl = self::_prepararCurl();
 			curl_setopt_array($curl, array(
-				CURLOPT_URL => self::$_url,
+				CURLOPT_URL => self::$_urls[$this->_ambiente]['registro'],
 				CURLOPT_POSTFIELDS => &$requisicao,
 				CURLOPT_HTTPHEADER => array(
 					'Content-Type: text/xml;charset=UTF-8',

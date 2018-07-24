@@ -62,6 +62,12 @@ $parametros = array(
 	'codigoTipoCanalSolicitacao' => 5
 );
 
+// Passa para o ambiente de testes. Por padrão, o construtor usa o ambiente de produção.
+// Para retornar para o ambiente de produção a qualquer momento, basta chamar o método
+// alterarParaAmbienteDeProducao() (ex.: $bb->alterarParaAmbienteDeProducao();)
+$bb->alterarParaAmbienteDeTestes();
+// $bb->alterarParaAmbienteDeProducao();
+
 // Exemplo de chamada passando os parâmetros com a token.
 // Retorna um array com a resposta do Banco do Brasil, se ocorreu tudo bem. Caso contrário, retorna "false".
 // A descrição do erro pode ser obtida pelo método "obterErro()".
