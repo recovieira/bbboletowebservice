@@ -29,13 +29,19 @@ Você precisa ter as seguintes bibliotecas do PHP instaladas para usar esta impl
 Baixe primeiramente a implementação:
 
 ```sh
-$ git clone https://github.com/recovieira/bbboletowebservice.git minhaimplementacao
+$ git clone https://github.com/recovieira/bbboletowebservice minhaimplementacao
 $ cd minhaimplementacao
 ```
 
 Primeiramente, você deve modificar o arquivo "index.php" para atender às suas necessidades.
 
-Posteriormente, execute o exemplo contido seja pela Web ou pela CLI (você precisará ter o pacote "php-cli" instalado). Para executar pela linha de comando, dê o comando:
+
+##### Atenção
+
+**A credencial ("Client Id" com "Secret Key") para registro no ambiente de produção é diferente daquela para registro no ambiente de testes (homologação). A tentativa de obter a token de acesso ("access token") usando uma credencial incompatível com o ambiente no qual a biblioteca foi configurada para tentar registrar o boleto ocasionará a emissão da mensagem "Identificador ou credencial inválidos" pelo Web Service do Banco do Brasil.** Obtenha uma credencial para cada ambiente que você esteja tentando registrá-los.
+
+
+Posteriormente, execute o exemplo contido seja pela Web ou pela CLI. Para executar pela linha de comando, dê o comando seguinte (neste caso, você precisará ter o pacote "php-cli" instalado):
 
 ```sh
 $ php index.php
